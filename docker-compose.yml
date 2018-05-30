@@ -1,22 +1,22 @@
 version: "3"
 services:
   frontend:
-    build: ./frontend
+    build: ${FRONTEND_DIR}
     ports:
-      - "8000:8000"
+      - "${PORT}:${PORT}"
     depends_on:
       - backend
     environment:
-      - API_SERVER="http://192.168.2.111:8888"
+      - API_SERVER="http://${API_HOST}:${API_PORT}"
     command: "--host 0.0.0.0"
     working_dir: "/code"
     volumes:
-      - "./frontend:/code"
+      - "${FRONTEND_DIR}:/code"
   backend:
-    build: ./backend
+    build: ${BACKEND_DIR}
     ports:
-      - "8888:8888"
+      - "${API_PORT}:${API_PORT}"
     command: "--host 0.0.0.0"
     working_dir: "/code"
     volumes:
-      - "./backend:/code"
+      - "${BACKEND_DIR}:/code"
