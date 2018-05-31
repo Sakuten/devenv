@@ -1,6 +1,0 @@
-[submodule "backend"]
-	path = backend
-	url = https://github.com/Sakuten/lottery-backend
-[submodule "frontend"]
-	path = frontend
-	url = https://github.com/Sakuten/lottery-frontend
