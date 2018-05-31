@@ -6,6 +6,7 @@ services:
       context: ${FRONTEND_DIR}
     ports:
       - "${PORT}:${PORT}"
+      - "8081:8081"
     depends_on:
       - backend
     environment:
