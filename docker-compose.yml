@@ -1,7 +1,9 @@
 version: "3"
 services:
   frontend:
-    build: ${FRONTEND_DIR}
+    build:
+      dockerfile: Dockerfile.dev
+      context: ${FRONTEND_DIR}
     ports:
       - "${PORT}:${PORT}"
     depends_on:
@@ -13,7 +15,9 @@ services:
     volumes:
       - "${FRONTEND_DIR}:/code"
   backend:
-    build: ${BACKEND_DIR}
+    build:
+      dockerfile: Dockerfile.dev
+      context: ${BACKEND_DIR}
     ports:
       - "${API_PORT}:${API_PORT}"
     command: "--host 0.0.0.0"
