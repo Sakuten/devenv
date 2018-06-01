@@ -17,13 +17,19 @@
 ## セットアップ
 
 ```bash
-git clone https://github.com/Sakuten/devenv
+git clone --recursive https://github.com/Sakuten/devenv
 cd devenv
-git clone https://github.com/Sakuten/lottery-backend backend
-git clone https://github.com/Sakuten/lottery-frontend frontend
+# フロントエンドの開発をする場合
+cd frontend
+git pull # 最新のソースに更新
+# バックエンドの開発をする場合
+cd backend
+git pull # 最新のソースに更新
 ```
 
 ## 開発を開始
+
+`docker-compose.yml`があるディレクトリで
 
 ```bash
 docker-compose up
