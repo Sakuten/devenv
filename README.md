@@ -21,10 +21,10 @@ git clone --recursive https://github.com/Sakuten/devenv
 cd devenv
 # フロントエンドの開発をする場合
 cd frontend
-git pull # 最新のソースに更新
+git pull origin develop # 最新のソースに更新
 # バックエンドの開発をする場合
 cd backend
-git pull # 最新のソースに更新
+git pull origin develop # 最新のソースに更新
 ```
 
 ## 開発を開始
