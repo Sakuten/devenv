@@ -40,7 +40,7 @@ services:
       - "./mysql-init:/docker-entrypoint-initdb.d"
       - "./mysql-confd:/etc/mysql/conf.d"
     environment:
-      - MYSQL_ROOT_PASSWORD=password
+      - "MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}"
     expose:
       - "3306"
     ports:
