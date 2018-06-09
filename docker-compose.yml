@@ -38,6 +38,7 @@ services:
     volumes:
       - "./mysql:/var/lib/mysql"
       - "./mysql-init:/docker-entrypoint-initdb.d"
+      - "./mysql-confd:/etc/mysql/conf.d"
     environment:
       - MYSQL_ROOT_PASSWORD=password
     expose:
