@@ -43,3 +43,5 @@ services:
       - MYSQL_ROOT_PASSWORD=password
     expose:
       - "3306"
+    ports:
+      - "3306:3306"
