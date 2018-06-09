@@ -34,7 +34,7 @@ services:
     volumes:
       - "${BACKEND_DIR}:/code"
   mysql:
-    image: mysql:8.0.11
+    image: mysql:5
     volumes:
       - "./mysql:/var/lib/mysql"
       - "./mysql-init:/docker-entrypoint-initdb.d"
