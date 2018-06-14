@@ -1,5 +1,16 @@
 version: "3"
 services:
+  monitor:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./monitor
+    command: "'ALL SERVICES are READY! Open http://${API_HOST}:${PORT}/ in your browser.' mysql:3306 backend:${API_PORT} frontend:${PORT}"
+    environment:
+      - "TERM=${TERM}"
+    links:
+      - frontend
+      - backend
+      - mysql
   frontend:
     build:
       dockerfile: Dockerfile.dev
