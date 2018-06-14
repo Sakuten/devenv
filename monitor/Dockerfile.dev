@@ -1,0 +1,16 @@
+FROM bash:4.4
+
+ADD https://github.com/progrium/entrykit/releases/download/v0.4.0/entrykit_0.4.0_Linux_x86_64.tgz /entrykit.tgz
+ADD https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh /bin/wait-for-it
+
+RUN tar xf /entrykit.tgz \
+    && rm /entrykit.tgz \
+    && mv ./entrykit /bin/entrykit \
+    && chmod +x /bin/entrykit \
+    && /bin/entrykit --symlink \
+    && chmod +x /bin/wait-for-it
+
+ENTRYPOINT ["wait-for-it", "mysql:3306", "-t", "0", "--", \
+            "wait-for-it", "backend:8888", "-t", "0", "--", \
+            "wait-for-it", "frontend:8000", "-t", "0", "--", \
+            "echo"]

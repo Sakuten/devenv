@@ -1,5 +1,14 @@
 version: "3"
 services:
+  monitor:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./monitor
+    command: "READY!"
+    links:
+      - frontend
+      - backend
+      - mysql
   frontend:
     build:
       dockerfile: Dockerfile.dev
