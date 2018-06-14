@@ -4,7 +4,9 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./monitor
-    command: "READY!"
+    command: "ALL SERVISES are READY! Open http://${API_HOST}:${PORT}/ in your browser."
+    environment:
+      - "TERM=${TERM}"
     links:
       - frontend
       - backend
