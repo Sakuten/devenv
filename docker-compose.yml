@@ -4,7 +4,7 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./monitor
-    command: "ALL SERVISES are READY! Open http://${API_HOST}:${PORT}/ in your browser."
+    command: "'ALL SERVISES are READY! Open http://${API_HOST}:${PORT}/ in your browser.' mysql:3306 backend:${API_PORT} frontend:${PORT}"
     environment:
       - "TERM=${TERM}"
     links:

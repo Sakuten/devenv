@@ -12,4 +12,12 @@ function box_out()
   tput sgr 0
 }
 
-box_out $@
+message="$1"
+shift
+
+for host in "$@"
+do
+  wait-for-it $host -t 0
+done
+
+box_out $message
