@@ -13,6 +13,10 @@
    - Windows: [Git for Windows](https://gitforwindows.org/)
    - macOS: `brew install git`
    - GNU/Linux: ディストリごとに適当に
+- gitflow-avh (ただのgitflowではなくAVH Editionを使用してください)
+   - Windows: Git for Windowsに同梱
+   - macOS: `brew install gitflow-avh`
+   - GNU/Linux: See [Here](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Linux,-Unix,-etc.)
 
 ## セットアップ
 
