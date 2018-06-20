@@ -42,6 +42,30 @@ docker-compose up
 `.env`に記載されたポートが開くので、開発が開始できます
 `frontend/`と`backend/`はそれぞれ編集すると自動でリロードがかかりますので、お好みのエディタで編集してください
 
+## ワークフロー
+
+0. (バグを見つけたり、やらなきゃいけないことを見つけたりしたらIssueを立てます。)
+1. あなたががIssueにアサインされます
+2. ローカルでfeatureやbugfixブランチを切ります
+   (`develop`で最新のコミットをpullした状態か確認してから行う)
+```bash
+# 機能追加の場合
+git flow feature start feature-name # feature-nameは例です。自分で名付けます。慣習的に`kebab-case`です
+```
+
+```bash
+# バグ修正の場合
+git flow bugfix start bugfix-name # bugfix-nameは例です。自分で名付けます。慣習的に`kebab-case`です
+```
+
+3. 実装できたらそのブランチをpushしてGitHub上でPull Requestを出します (ここで`git flow feature finish`しないでください)
+```bash
+git push origin feature/feature-name # 先ほど作ったブランチをpushする
+```
+
+4. あなたのPull Requestを[@Sakuten/moderator](https://github.com/orgs/Sakuten/teams/moderator) がレビューします。指示があったら従ってください
+5. マージされたらIssue解決です、ありがとうございました。
+
 # Windows 32bit
 
 64BitでもDocker CEが入らなさそうだったらこっちでお願いします
