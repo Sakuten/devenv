@@ -69,6 +69,8 @@ git flow bugfix start bugfix-name # bugfix-nameは例です。自分で名付け
 git push origin feature/feature-name # 先ほど作ったブランチをpushする
 ```
 
+この際、Pull Request状に元のIssueへのリンクを、元のIssue上にPull Requestへのリンクを、それぞれ記載してください。
+
 4. あなたのPull Requestを[@Sakuten/moderator](https://github.com/orgs/Sakuten/teams/moderator) がレビューします。指示があったら従ってください
 5. マージされたらIssue解決です、ありがとうございました。
 
