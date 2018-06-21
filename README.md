@@ -47,7 +47,11 @@ docker-compose up
 0. (バグを見つけたり、やらなきゃいけないことを見つけたりしたらIssueを立てます。)
 1. あなたががIssueにアサインされます
 2. ローカルでfeatureやbugfixブランチを切ります
-   (`develop`で最新のコミットをpullした状態か確認してから行う)
+```bash
+# 最新のコミットを取得
+git pull origin develop
+```
+
 ```bash
 # 機能追加の場合
 git flow feature start feature-name # feature-nameは例です。自分で名付けます。慣習的に`kebab-case`です
