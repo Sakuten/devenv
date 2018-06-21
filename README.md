@@ -54,13 +54,15 @@ git pull origin develop
 
 ```bash
 # 機能追加の場合
-git flow feature start feature-name # feature-nameは例です。自分で名付けます。慣習的に`kebab-case`です
+git flow feature start feature-name # feature-nameは例です。自分で名付けます。
 ```
 
 ```bash
 # バグ修正の場合
-git flow bugfix start bugfix-name # bugfix-nameは例です。自分で名付けます。慣習的に`kebab-case`です
+git flow bugfix start bugfix-name # bugfix-nameは例です。自分で名付けます。
 ```
+
+※ブランチ名は慣習的に[`kebab-case`](https://qiita.com/ybiquitous/items/75288bacb596a82a2805)です
 
 3. 実装できたらそのブランチをpushしてGitHub上でPull Requestを出します (ここで`git flow feature finish`しないでください)
 ```bash
