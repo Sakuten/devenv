@@ -13,6 +13,10 @@
    - Windows: [Git for Windows](https://gitforwindows.org/)
    - macOS: `brew install git`
    - GNU/Linux: ディストリごとに適当に
+- gitflow-avh (ただのgitflowではなくAVH Editionを使用してください)
+   - Windows: Git for Windowsに同梱
+   - macOS: `brew install gitflow-avh`
+   - GNU/Linux: See [Here](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Linux,-Unix,-etc.)
 
 ## セットアップ
 
@@ -37,6 +41,38 @@ docker-compose up
 
 `.env`に記載されたポートが開くので、開発が開始できます
 `frontend/`と`backend/`はそれぞれ編集すると自動でリロードがかかりますので、お好みのエディタで編集してください
+
+## ワークフロー
+
+0. (バグを見つけたり、やらなきゃいけないことを見つけたりしたらIssueを立てます。)
+1. あなたががIssueにアサインされます
+2. ローカルでfeatureやbugfixブランチを切ります
+```bash
+# 最新のコミットを取得
+git pull origin develop
+```
+
+```bash
+# 機能追加の場合
+git flow feature start feature-name # feature-nameは例です。自分で名付けます。
+```
+
+```bash
+# バグ修正の場合
+git flow bugfix start bugfix-name # bugfix-nameは例です。自分で名付けます。
+```
+
+※ブランチ名は慣習的に[`kebab-case`](https://qiita.com/ybiquitous/items/75288bacb596a82a2805)です
+
+3. 実装できたらそのブランチをpushしてGitHub上でPull Requestを出します (ここで`git flow feature finish`しないでください)
+```bash
+git push origin feature/feature-name # 先ほど作ったブランチをpushする
+```
+
+この際、Pull Request上に元のIssueへのリンクを、元のIssue上にPull Requestへのリンクを、それぞれ記載してください。
+
+4. あなたのPull Requestを[@Sakuten/moderator](https://github.com/orgs/Sakuten/teams/moderator) がレビューします。指示があったら従ってください
+5. マージされたらIssue解決です、ありがとうございました。
 
 # Windows 32bit
 
