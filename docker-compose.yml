@@ -4,13 +4,13 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ./monitor
-    command: "'ALL SERVICES are READY! Open http://${API_HOST}:${PORT}/ in your browser.' mysql:3306 backend:${API_PORT} frontend:${PORT}"
+    command: "'ALL SERVICES are READY! Open http://${API_HOST}:${PORT}/ in your browser.' db:5432 backend:${API_PORT} frontend:${PORT}"
     environment:
       - "TERM=${TERM}"
     links:
       - frontend
       - backend
-      - mysql
+      - db
   frontend:
     build:
       dockerfile: Dockerfile.dev
@@ -33,9 +33,9 @@ services:
     ports:
       - "${API_PORT}:${API_PORT}"
     depends_on:
-      - mysql
+      - db
     links:
-      - mysql
+      - db
     environment:
       - FLASK_APP=app.py
       - FLASK_ENV=development
@@ -44,15 +44,11 @@ services:
     working_dir: "/code"
     volumes:
       - "${BACKEND_DIR}:/code"
-  mysql:
-    image: mysql:5
-    volumes:
-      - "./mysql:/var/lib/mysql"
-      - "./mysql-init:/docker-entrypoint-initdb.d"
-      - "./mysql-confd:/etc/mysql/conf.d"
+  db:
+    image: postgres:10.4
     environment:
-      - "MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}"
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
     expose:
-      - "3306"
+      - "5432"
     ports:
-      - "3306:3306"
+      - "5432:5432"
