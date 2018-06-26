@@ -21,7 +21,7 @@ services:
     depends_on:
       - backend
     environment:
-      - API_SERVER=http://${API_HOST}:${API_PORT}
+      - "API_SERVER=http://${API_HOST}:${API_PORT}"
     command: "--port ${PORT} --host 0.0.0.0"
     working_dir: "/code"
     volumes:
