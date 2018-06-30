@@ -21,8 +21,9 @@ services:
     depends_on:
       - backend
     environment:
-      - "API_SERVER=http://${API_HOST}:${API_PORT}"
-    command: "--port ${PORT} --host 0.0.0.0"
+      - "REACT_APP_API_SERVER=http://${API_HOST}:${API_PORT}"
+      - "PORT=${PORT}"
+      - "HOST=0.0.0.0"
     working_dir: "/code"
     volumes:
       - "${FRONTEND_DIR}:/code"
