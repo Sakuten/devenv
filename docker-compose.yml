@@ -15,6 +15,7 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ${FRONTEND_DIR}
+    command: "start"
     ports:
       - "${PORT}:${PORT}"
       - "8081:8081"
