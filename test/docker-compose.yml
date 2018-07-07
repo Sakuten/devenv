@@ -22,6 +22,7 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ../${FRONTEND_DIR}
+    command: "start:js"
     expose:
       - "${PORT}"
     depends_on:
@@ -47,7 +48,7 @@ services:
       - FLASK_APP=app.py
       - FLASK_ENV=development
       - FLASK_DEBUG=1
-    command: "--port ${API_PORT} --host 0.0.0.0"
+    command: "start:flask --port ${API_PORT} --host 0.0.0.0"
     working_dir: "/code"
     volumes:
       - "../${BACKEND_DIR}:/code"
