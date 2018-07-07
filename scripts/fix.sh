@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker-compose -f lint/lint.yml run --rm frontend
-docker-compose -f lint/lint.yml run --rm backend
+docker-compose -f lint/docker-compose.yml run --rm frontend
+docker-compose -f lint/docker-compose.yml run --rm backend
