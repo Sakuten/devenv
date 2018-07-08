@@ -15,6 +15,7 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ${FRONTEND_DIR}
+    command: "start"
     ports:
       - "${PORT}:${PORT}"
       - "8081:8081"
@@ -24,6 +25,7 @@ services:
       - "REACT_APP_API_SERVER=http://${API_HOST}:${API_PORT}"
       - "PORT=${PORT}"
       - "HOST=0.0.0.0"
+      - "SHELL=/bin/sh"
     working_dir: "/code"
     volumes:
       - "${FRONTEND_DIR}:/code"
