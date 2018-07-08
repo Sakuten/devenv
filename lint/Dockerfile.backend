@@ -1,0 +1,12 @@
+FROM python:3.6-stretch
+
+WORKDIR /code
+COPY Pipfile /code
+
+RUN pip install pipenv \
+    && pipenv install --dev
+
+
+ENTRYPOINT ["pipenv", "run"]
+
+CMD ["fix"]
