@@ -64,15 +64,21 @@ git flow bugfix start bugfix-name # bugfix-nameは例です。自分で名付け
 
 ※ブランチ名は慣習的に[`kebab-case`](https://qiita.com/ybiquitous/items/75288bacb596a82a2805)です
 
-3. 実装できたらそのブランチをpushしてGitHub上でPull Requestを出します (ここで`git flow feature finish`しないでください)
+3. 該当機能/修正を実装します
+
+4. 自分の書いた変更について、テストを書きます
+
+5. Lint, Unit Testが通ることを確認してください。またこの段階でE2E Testが通る必要はありません。
+
+6. ブランチをpushしてGitHub上でPull Requestを出します (ここで`git flow feature finish`しないでください)
 ```bash
 git push origin feature/feature-name # 先ほど作ったブランチをpushする
 ```
 
 この際、Pull Request上に元のIssueへのリンクを、元のIssue上にPull Requestへのリンクを、それぞれ記載してください。
 
-4. あなたのPull Requestを[@Sakuten/moderator](https://github.com/orgs/Sakuten/teams/moderator) がレビューします。指示があったら従ってください
-5. マージされたらIssue解決です、ありがとうございました。
+7. あなたのPull Requestを[@Sakuten/moderator](https://github.com/orgs/Sakuten/teams/moderator) がレビューします。指示があったら従ってください
+8. マージされたらIssue解決です、ありがとうございました。
 
 # Windows 32bit
 
