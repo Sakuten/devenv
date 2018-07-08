@@ -1,17 +1,17 @@
 #!/bin/bash
 
-echo -n "OS: "
+echo -n " * OS: "
 uname -a
 
-echo -n "devenv: "
+echo -n " * devenv: "
 git rev-parse HEAD
 
-echo -n "frontend: "
+echo -n " * frontend: "
 cd frontend
 git rev-parse HEAD
 cd ..
 
 cd backend
-echo -n "backend: "
+echo -n " * backend: "
 git rev-parse HEAD
 cd ..
