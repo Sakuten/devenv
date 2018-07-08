@@ -12,6 +12,6 @@ before_install:
     sudo wget https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
 script:
-  - ./script/lint.sh
-  - ./script/unit_test.sh
-  - ./script/test.sh
+  - ./scripts/lint.sh
+  - ./scripts/unit_test.sh
+  - ./scripts/test.sh
