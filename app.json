@@ -1,5 +1,5 @@
 {
-  "name": "sakuten-api",
+  "name": "sakuten-api-testflight",
   "scripts": {},
   "env": {
     "FLASK_CONFIGURATION": {
