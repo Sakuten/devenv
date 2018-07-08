@@ -5,6 +5,8 @@ services:
       dockerfile: ../unit_test/Dockerfile.frontend
       context: ../${FRONTEND_DIR}
     command: "test"
+    environment:
+      - "CI=1"
     volumes:
       - "../${FRONTEND_DIR}:/code"
       - /code/node_modules
