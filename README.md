@@ -1,3 +1,6 @@
+
+[![Travis CI](https://travis-ci.org/Sakuten/devenv.svg?branch=develop)](https://travis-ci.org/Sakuten/devenv)
+
 # 開発環境
 
 ## 必要なもの
