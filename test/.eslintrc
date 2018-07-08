@@ -1,0 +1,23 @@
+{
+  "extends": "standard",
+  "plugins": [
+    "mocha"
+  ],
+  "rules": {
+    "mocha/no-exclusive-tests": "error",
+    "no-unused-vars": "warn"
+  },
+  "parserOptions": {
+    "ecmaVersion": 8
+  },
+  "env": {
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  globals: {
+    "browser": false,
+    "$": false,
+    "$$": false
+  }
+}
