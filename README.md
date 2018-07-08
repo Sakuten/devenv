@@ -36,11 +36,21 @@ git pull origin develop # 最新のソースに更新
 `docker-compose.yml`があるディレクトリで
 
 ```bash
-docker-compose up
+./scripts/start.sh
 ```
 
 `.env`に記載されたポートが開くので、開発が開始できます
 `frontend/`と`backend/`はそれぞれ編集すると自動でリロードがかかりますので、お好みのエディタで編集してください
+
+## コマンド群
+
+- `./scripts/start.sh`: 開発環境を開始します
+- `./scripts/stop.sh`: 開発環境を停止します
+- `./scripts/fix.sh`: Lintおよびコードの自動フォーマットを行います
+- `./scripts/lint.sh`: Lintをします (自動修正はせず、指摘のみです)
+- `./scripts/test.sh`: E2Eテストを走らせます
+- `./scripts/unit_test.sh`: frontend, backendそれぞれについてユニットテストを走らせます
+- `./scripts/report.sh`: IssueやPRを建てる時に使える診断情報を出力します
 
 ## ワークフロー
 
