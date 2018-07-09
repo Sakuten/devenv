@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 readonly cachedir="$HOME/.cache/devenv/"
 
 if [ ! -d "$cachedir" ]; then
