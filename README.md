@@ -20,11 +20,14 @@
    - Windows: Git for Windowsに同梱
    - macOS: `brew install gitflow-avh`
    - GNU/Linux: See [Here](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Linux,-Unix,-etc.)
-- その他コマンド
-   - `md5sum`
-    - Windows: 元から入っている(WSL/Git Bash)
-    - macOS: `brew install md5sha1sum`
-    - GNU/Linux: 元から入っていることが多い
+- Bash 4
+   - Windows: 元から入っている(WSL/Git Bash)
+   - macOS: `brew install bash`
+   - GNU/Linut: 元から入っていることが多い
+- `md5sum`
+   - Windows: 元から入っている(WSL/Git Bash)
+   - macOS: `brew install md5sha1sum`
+   - GNU/Linux: 元から入っていることが多い
 
 ## セットアップ
 
