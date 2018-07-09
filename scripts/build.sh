@@ -10,8 +10,9 @@ declare -A targets=(
  [backend]="backend/Dockerfile.dev"  [frontend]="frontend/Dockerfile.dev"  [monitor]="monitor/Dockerfile.dev"
 )
 
-for service in "${!targets[@]}"; do
-  dockerfile=${targets[$service]}
+function build() {
+  dockerfile=$1
+  service=$2
 
   name=$(echo "$dockerfile" | md5sum | awk '{print $1}')
   hash=$(md5sum $dockerfile | awk '{print $1}')
@@ -23,10 +24,18 @@ for service in "${!targets[@]}"; do
 
     if [ "$hash" == "$prehash" ]; then
       echo "$dockerfile not changed. skipping"
-      continue
+      return
     fi
   fi
 
   docker-compose build $service
   echo $hash > $cachepath
-done
+}
+
+if [ "$#" -ne 0 ]; then
+  build ${targets[$1]} $1
+else
+  for service in "${!targets[@]}"; do
+    build ${targets[$service]} $service
+  done
+fi
