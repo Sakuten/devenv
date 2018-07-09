@@ -3,7 +3,7 @@
 readonly cachedir="$HOME/.cache/devenv/"
 
 if [ ! -d "$cachedir" ]; then
-  mkdir -p $cachedir
+  mkdir -p "$cachedir"
 fi
 
 declare -A targets=(
@@ -11,11 +11,11 @@ declare -A targets=(
 )
 
 function build() {
-  dockerfile=$1
-  service=$2
+  dockerfile="$1"
+  service="$2"
 
   name=$(echo "$dockerfile" | md5sum | awk '{print $1}')
-  hash=$(md5sum $dockerfile | awk '{print $1}')
+  hash=$(md5sum "$dockerfile" | awk '{print $1}')
 
   cachepath="$cachedir/$name"
 
@@ -29,13 +29,13 @@ function build() {
   fi
 
   docker-compose build $service
-  echo $hash > $cachepath
+  echo $hash > "$cachepath"
 }
 
 if [ "$#" -ne 0 ]; then
-  build ${targets[$1]} $1
+  build "${targets[$1]}" $1
 else
   for service in "${!targets[@]}"; do
-    build ${targets[$service]} $service
+    build "${targets[$service]}" $service
   done
 fi
