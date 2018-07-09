@@ -49,6 +49,7 @@ git pull origin develop # 最新のソースに更新
 
 - `./scripts/start.sh`: 開発環境を開始します
 - `./scripts/stop.sh`: 開発環境を停止します
+- `./scripts/build.sh`: 開発に使うdockerイメージをビルドします
 - `./scripts/fix.sh`: Lintおよびコードの自動フォーマットを行います
 - `./scripts/lint.sh`: Lintをします (自動修正はせず、指摘のみです)
 - `./scripts/test.sh`: E2Eテストを走らせます
