@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker-compose up -d --build
+./scripts/build.sh
+docker-compose up -d
