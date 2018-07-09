@@ -6,9 +6,10 @@ if [ ! -d "$cachedir" ]; then
   mkdir -p "$cachedir"
 fi
 
-declare -A targets=(
- [backend]="backend/Dockerfile.dev"  [frontend]="frontend/Dockerfile.dev"  [monitor]="monitor/Dockerfile.dev"
-)
+declare -A targets
+targets[backend]="backend/Dockerfile.dev"
+targets[frontend]="frontend/Dockerfile.dev"
+targets[monitor]="monitor/Dockerfile.dev"
 
 function build() {
   dockerfile="$1"
