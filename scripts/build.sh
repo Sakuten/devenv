@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly cachedir="~/.cache/devenv/"
+readonly cachedir="$HOME/.cache/devenv/"
 
 if [ ! -d "$cachedir" ]; then
   mkdir -p $cachedir
