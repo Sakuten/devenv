@@ -6,9 +6,9 @@
       "description": "The config to use. This should be 'preview' to run in Heroku.",
       "value": "preview"
     },
-    "FLASK_APP": {
-      "description": "Where app is present.",
-      "value": "backend/app.py"
+    "GIT_REPO_URL": {
+      "description": "The git repository URL",
+      "value": "https://github.com/Sakuten/devenv.git"
     },
     "PYTHONPATH": {
       "description": "The path used for python name resolution.",
