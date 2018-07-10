@@ -1,0 +1,19 @@
+version: "3"
+services:
+  frontend:
+    build:
+      dockerfile: ../unit_test/Dockerfile.frontend
+      context: ../${FRONTEND_DIR}
+    command: "test"
+    environment:
+      - "CI=1"
+    volumes:
+      - "../${FRONTEND_DIR}:/code"
+      - /code/node_modules
+  backend:
+    build:
+      dockerfile: ../unit_test/Dockerfile.backend
+      context: ../${BACKEND_DIR}
+    command: "test"
+    volumes:
+      - "../${BACKEND_DIR}:/code"
