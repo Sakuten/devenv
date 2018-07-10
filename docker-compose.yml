@@ -41,9 +41,8 @@ services:
       - db
     environment:
       - FLASK_APP=app.py
-      - FLASK_ENV=development
-      - FLASK_DEBUG=1
-    command: "bash -c 'pipenv run start:dep & flask run --port ${API_PORT} --host 0.0.0.0'"
+      - FLASK_CONFIGURATION=development
+    command: "/bin/bash -c 'pipenv run start:dep & pipenv run start:flask --port ${API_PORT} --host 0.0.0.0'"
     working_dir: "/code"
     volumes:
       - "${BACKEND_DIR}:/code"

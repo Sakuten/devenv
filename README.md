@@ -1,3 +1,6 @@
+
+[![Travis CI](https://travis-ci.org/Sakuten/devenv.svg?branch=develop)](https://travis-ci.org/Sakuten/devenv)
+
 # 開発環境
 
 ## 必要なもの
@@ -17,6 +20,14 @@
    - Windows: Git for Windowsに同梱
    - macOS: `brew install gitflow-avh`
    - GNU/Linux: See [Here](https://github.com/petervanderdoes/gitflow-avh/wiki/Installing-on-Linux,-Unix,-etc.)
+- Bash 4
+   - Windows: 元から入っている(WSL/Git Bash)
+   - macOS: `brew install bash`
+   - GNU/Linut: 元から入っていることが多い
+- `md5sum`
+   - Windows: 元から入っている(WSL/Git Bash)
+   - macOS: `brew install md5sha1sum`
+   - GNU/Linux: 元から入っていることが多い
 
 ## セットアップ
 
@@ -36,11 +47,23 @@ git pull origin develop # 最新のソースに更新
 `docker-compose.yml`があるディレクトリで
 
 ```bash
-docker-compose up
+./scripts/start.sh
 ```
 
 `.env`に記載されたポートが開くので、開発が開始できます
 `frontend/`と`backend/`はそれぞれ編集すると自動でリロードがかかりますので、お好みのエディタで編集してください
+
+## コマンド群
+
+- `./scripts/start.sh`: 開発環境を開始します
+- `./scripts/stop.sh`: 開発環境を停止します
+- `./scripts/build.sh [frontend|backend]`: 開発に使うdockerイメージをビルドします
+- `./scripts/fix.sh [frontend|backend]`: Lintおよびコードの自動フォーマットを行います
+- `./scripts/lint.sh [frontend|backend]`: Lintをします (自動修正はせず、指摘のみです)
+- `./scripts/test.sh`: E2Eテストを走らせます
+- `./scripts/unit_test.sh [frontend|backend]`: frontend, backendそれぞれについてユニットテストを走らせます
+- `./scripts/report.sh`: IssueやPRを建てる時に使える診断情報を出力します
+- `./scripts/cleanup.sh`: 環境を再構築します。なんかうまくいかないときにどうぞ
 
 ## ワークフロー
 
@@ -64,15 +87,21 @@ git flow bugfix start bugfix-name # bugfix-nameは例です。自分で名付け
 
 ※ブランチ名は慣習的に[`kebab-case`](https://qiita.com/ybiquitous/items/75288bacb596a82a2805)です
 
-3. 実装できたらそのブランチをpushしてGitHub上でPull Requestを出します (ここで`git flow feature finish`しないでください)
+3. 該当機能/修正を実装します
+
+4. 自分の書いた変更について、テストを書きます
+
+5. Lint, Unit Testが通ることを確認してください。またこの段階でE2E Testが通る必要はありません。
+
+6. ブランチをpushしてGitHub上でPull Requestを出します (ここで`git flow feature finish`しないでください)
 ```bash
 git push origin feature/feature-name # 先ほど作ったブランチをpushする
 ```
 
 この際、Pull Request上に元のIssueへのリンクを、元のIssue上にPull Requestへのリンクを、それぞれ記載してください。
 
-4. あなたのPull Requestを[@Sakuten/moderator](https://github.com/orgs/Sakuten/teams/moderator) がレビューします。指示があったら従ってください
-5. マージされたらIssue解決です、ありがとうございました。
+7. あなたのPull Requestを[@Sakuten/moderator](https://github.com/orgs/Sakuten/teams/moderator) がレビューします。指示があったら従ってください
+8. マージされたらIssue解決です、ありがとうございました。
 
 # Windows 32bit
 
