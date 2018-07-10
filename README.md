@@ -63,6 +63,7 @@ git pull origin develop # 最新のソースに更新
 - `./scripts/test.sh`: E2Eテストを走らせます
 - `./scripts/unit_test.sh [frontend|backend]`: frontend, backendそれぞれについてユニットテストを走らせます
 - `./scripts/report.sh`: IssueやPRを建てる時に使える診断情報を出力します
+- `./scripts/cleanup.sh`: 環境を再構築します。なんかうまくいかないときにどうぞ
 
 ## ワークフロー
 
