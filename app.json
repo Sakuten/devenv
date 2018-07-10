@@ -28,5 +28,12 @@
       }
     }
   ],
-  "buildpacks": []
+  "buildpacks": [
+    {
+      "url": "https://github.com/Sakuten/heroku-buildpack-git-submodule.git"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
 }
