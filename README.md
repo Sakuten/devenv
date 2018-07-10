@@ -57,11 +57,11 @@ git pull origin develop # 最新のソースに更新
 
 - `./scripts/start.sh`: 開発環境を開始します
 - `./scripts/stop.sh`: 開発環境を停止します
-- `./scripts/build.sh`: 開発に使うdockerイメージをビルドします
-- `./scripts/fix.sh`: Lintおよびコードの自動フォーマットを行います
-- `./scripts/lint.sh`: Lintをします (自動修正はせず、指摘のみです)
+- `./scripts/build.sh [frontend|backend]`: 開発に使うdockerイメージをビルドします
+- `./scripts/fix.sh [frontend|backend]`: Lintおよびコードの自動フォーマットを行います
+- `./scripts/lint.sh [frontend|backend]`: Lintをします (自動修正はせず、指摘のみです)
 - `./scripts/test.sh`: E2Eテストを走らせます
-- `./scripts/unit_test.sh`: frontend, backendそれぞれについてユニットテストを走らせます
+- `./scripts/unit_test.sh [frontend|backend]`: frontend, backendそれぞれについてユニットテストを走らせます
 - `./scripts/report.sh`: IssueやPRを建てる時に使える診断情報を出力します
 
 ## ワークフロー
