@@ -23,6 +23,7 @@ services:
       - backend
     environment:
       - "REACT_APP_API_SERVER=http://${API_HOST}:${API_PORT}"
+      - "REACT_APP_RECAPTCHA_KEY=${RECAPTCHA_KEY}"
       - "PORT=${PORT}"
       - "HOST=0.0.0.0"
       - "SHELL=/bin/sh"
