@@ -57,6 +57,6 @@ describe('Login', function () {
     }
     // Logout
     $('button').click()
-    browser.waitForVisible('[data-test="applicationview"]', 500, true)  // true for reverse
+    browser.waitForVisible('[data-test="applicationview"]', 500, true) // true for reverse
   })
 })

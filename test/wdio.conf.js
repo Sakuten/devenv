@@ -61,7 +61,7 @@ exports.config = {
     browserName: 'chrome',
     //
     chromeOptions: {
-    args: ['use-fake-ui-for-media-stream', 'use-fake-device-for-media-stream', 'unsafely-treat-insecure-origin-as-secure=http://frontend:8000', 'user-data-dir=/tmp', 'use-file-for-fake-video-capture=/fake_video/qr.y4m']
+      args: ['use-fake-ui-for-media-stream', 'use-fake-device-for-media-stream', 'unsafely-treat-insecure-origin-as-secure=http://frontend:8000', 'user-data-dir=/tmp', 'use-file-for-fake-video-capture=/fake_video/qr.y4m']
     }
   }],
   //
