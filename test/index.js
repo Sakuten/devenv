@@ -46,4 +46,13 @@ describe('Login', function () {
     const title = $('h1').getText()
     expect(title).to.include('Logged in as')
   })
+
+  afterEach(function () {
+    if (!browser.isExisting('[data-test="applicationview"]')) {
+      return
+    }
+    // Logout
+    $('button').click()
+    browser.waitForVisible('h1', 1000, true)  // true for reverse
+  })
 })
