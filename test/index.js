@@ -32,6 +32,8 @@ describe('Login', function () {
     browser.waitForVisible('[data-test="applicationview"]', 2000)
     const title = $('[data-test="applicationview-title"]').getText()
     expect(title).to.equal('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
+    const url = browser.getUrl()
+    expect(url).to.equal('http://frontend:8000/lottery')
   })
 
   it('Can successfully authenticate', function () {
@@ -45,6 +47,8 @@ describe('Login', function () {
     browser.waitForVisible('[data-test="applicationview"]', 2000)
     const title = $('[data-test="applicationview-title"]').getText()
     expect(title).to.include('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
+    const url = browser.getUrl()
+    expect(url).to.equal('http://frontend:8000/lottery')
   })
 
   afterEach(function () {
