@@ -6,7 +6,7 @@
 [build.environment]
   NODE_ENV = "development"
   BABEL_ENV = "development"
-  REACT_APP_API_SERVER = "https://sakuten-api-preflight.herokuapp.com"
+  REACT_APP_API_SERVER = "https://sakuten-api-testflight.herokuapp.com"
 
 [context.production]
   command = "yarn build --production"

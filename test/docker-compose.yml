@@ -29,6 +29,7 @@ services:
       - backend
     environment:
       - "REACT_APP_API_SERVER=http://backend:${API_PORT}"
+      - "REACT_APP_RECAPTCHA_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
       - "PORT=${PORT}"
       - "HOST=0.0.0.0"
     working_dir: "/code"
@@ -46,8 +47,9 @@ services:
       - db
     environment:
       - FLASK_APP=app.py
+      - FLASK_CONFIGURATION=testing
       - FLASK_ENV=development
-      - FLASK_DEBUG=1
+      - RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
     command: "start:flask --port ${API_PORT} --host 0.0.0.0"
     working_dir: "/code"
     volumes:

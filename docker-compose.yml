@@ -23,6 +23,7 @@ services:
       - backend
     environment:
       - "REACT_APP_API_SERVER=http://${API_HOST}:${API_PORT}"
+      - "REACT_APP_RECAPTCHA_KEY=${RECAPTCHA_KEY}"
       - "PORT=${PORT}"
       - "HOST=0.0.0.0"
       - "SHELL=/bin/sh"
@@ -43,6 +44,7 @@ services:
       - FLASK_APP=app.py
       - FLASK_CONFIGURATION=development
       - FLASK_ENV=development
+      - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
     command: "/bin/bash -c 'pipenv run start:dep & pipenv run start:flask --port ${API_PORT} --host 0.0.0.0'"
     working_dir: "/code"
     volumes:
