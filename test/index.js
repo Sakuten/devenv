@@ -9,14 +9,14 @@ describe('Login', function () {
 
   it('Can successfully renders top page', function () {
     browser.url('http://frontend:8000/')
-    browser.waitForVisible('p', 3000)
+    browser.waitForVisible('p', 500)
     const title = $('p').getText()
     expect(title).to.include('Home')
   })
 
   it('Routes to login page', function () {
     browser.url('http://frontend:8000/')
-    browser.waitForVisible('[data-test="home-login"]', 3000)
+    browser.waitForVisible('[data-test="home-login"]', 500)
     $('[data-test="home-login"]').click()
     expect(browser.getUrl()).to.equal('http://frontend:8000/lottery/login')
   })
@@ -29,9 +29,9 @@ describe('Login', function () {
     $('.recaptcha-checkbox').click()
     browser.waitForVisible('.recaptcha-checkbox-checkmark', 5000)
     browser.frameParent()
-    browser.waitForVisible('[data-test="applicationview"]', 3000)
+    browser.waitForVisible('[data-test="applicationview"]', 2000)
     const title = $('[data-test="applicationview-title"]').getText()
-    expect(title).to.include('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
+    expect(title).to.include('Logged in as')
   })
 
   it('Can successfully authenticate', function () {
@@ -42,9 +42,9 @@ describe('Login', function () {
     $('.recaptcha-checkbox').click()
     browser.waitForVisible('.recaptcha-checkbox-checkmark', 5000)
     browser.frameParent()
-    browser.waitForVisible('[data-test="applicationview"]', 3000)
+    browser.waitForVisible('[data-test="applicationview"]', 2000)
     const title = $('[data-test="applicationview-title"]').getText()
-    expect(title).to.include('Logged in as')
+    expect(title).to.include('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
   })
 
   afterEach(function () {
@@ -53,6 +53,6 @@ describe('Login', function () {
     }
     // Logout
     $('button').click()
-    browser.waitForVisible('[data-test="applicationview"]', 1000, true)  // true for reverse
+    browser.waitForVisible('[data-test="applicationview"]', 500, true)  // true for reverse
   })
 })
