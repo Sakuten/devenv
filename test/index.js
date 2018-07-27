@@ -34,7 +34,7 @@ describe('Login', function () {
     expect(title).to.include('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
   })
 
-  it('Can successfully authenicate', function () {
+  it('Can successfully authenticate', function () {
     browser.url('http://frontend:8000/lottery/login')
     // detecting QR Code here...
     browser.waitForVisible('iframe', 5000)
