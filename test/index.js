@@ -21,6 +21,19 @@ describe('Login', function () {
     expect(browser.getUrl()).to.equal('http://frontend:8000/lottery/login')
   })
 
+  it('Can successfully authenticate with secret id in the get parameter', function () {
+    browser.url('http://frontend:8000/lottery/login?sid=6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
+    // Immediately shows reCAPTCHA
+    browser.waitForVisible('iframe', 500)
+    browser.frame($('iframe').value)
+    $('.recaptcha-checkbox').click()
+    browser.waitForVisible('.recaptcha-checkbox-checkmark', 5000)
+    browser.frameParent()
+    browser.waitForVisible('h1', 3000)
+    const title = $('h1').getText()
+    expect(title).to.include('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
+  })
+
   it('Can successfully authenicate', function () {
     browser.url('http://frontend:8000/lottery/login')
     // detecting QR Code here...
