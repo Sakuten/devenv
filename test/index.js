@@ -29,8 +29,8 @@ describe('Login', function () {
     $('.recaptcha-checkbox').click()
     browser.waitForVisible('.recaptcha-checkbox-checkmark', 5000)
     browser.frameParent()
-    browser.waitForVisible('h1', 3000)
-    const title = $('h1').getText()
+    browser.waitForVisible('[data-test="applicationview"]', 3000)
+    const title = $('[data-test="applicationview-title"]').getText()
     expect(title).to.include('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
   })
 
@@ -42,8 +42,8 @@ describe('Login', function () {
     $('.recaptcha-checkbox').click()
     browser.waitForVisible('.recaptcha-checkbox-checkmark', 5000)
     browser.frameParent()
-    browser.waitForVisible('h1', 3000)
-    const title = $('h1').getText()
+    browser.waitForVisible('[data-test="applicationview"]', 3000)
+    const title = $('[data-test="applicationview-title"]').getText()
     expect(title).to.include('Logged in as')
   })
 
@@ -53,6 +53,6 @@ describe('Login', function () {
     }
     // Logout
     $('button').click()
-    browser.waitForVisible('h1', 1000, true)  // true for reverse
+    browser.waitForVisible('[data-test="applicationview"]', 1000, true)  // true for reverse
   })
 })
