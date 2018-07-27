@@ -31,7 +31,7 @@ describe('Login', function () {
     browser.frameParent()
     browser.waitForVisible('[data-test="applicationview"]', 2000)
     const title = $('[data-test="applicationview-title"]').getText()
-    expect(title).to.include('Logged in as')
+    expect(title).to.equal('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
   })
 
   it('Can successfully authenticate', function () {
