@@ -58,7 +58,11 @@ exports.config = {
     // 5 instances get started at a time.
     maxInstances: 5,
     //
-    browserName: 'chrome'
+    browserName: 'chrome',
+    //
+    chromeOptions: {
+      args: ['use-fake-ui-for-media-stream', 'use-fake-device-for-media-stream', 'unsafely-treat-insecure-origin-as-secure=http://frontend:8000', 'user-data-dir=/tmp', 'use-file-for-fake-video-capture=/fake_video/qr.y4m']
+    }
   }],
   //
   // ===================
