@@ -18,6 +18,8 @@ services:
       - backend
       - frontend
     shm_size: 2g
+    volumes:
+      - "../test/fake_video:/fake_video"
   frontend:
     build:
       dockerfile: Dockerfile.dev

@@ -7,6 +7,11 @@
   REACT_APP_STAGING_BUILD = "1"
   REACT_APP_API_SERVER = "https://sakuten-api-testflight.herokuapp.com"
 
+[context.deploy-preview.environment]
+  # Testing key for preview deployment
+  # Details: https://developers.google.com/recaptcha/docs/faq#id-like-to-run-automated-tests-with-recaptcha-v2-what-should-i-do
+  REACT_APP_RECAPTCHA_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+
 [context.production]
   [context.production.environment]
     REACT_APP_API_SERVER = "https://sakuten-api-release.herokuapp.com"
