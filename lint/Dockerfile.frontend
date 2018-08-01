@@ -1,0 +1,21 @@
+FROM node:8.11.2-stretch
+
+ADD https://github.com/yarnpkg/yarn/releases/download/v1.7.0/yarn-v1.7.0.tar.gz /opt/yarn.tgz
+
+WORKDIR /code
+COPY package.json /code
+
+RUN cd /opt \
+    && tar xf yarn.tgz \
+    && ln -s yarn-1.7.0/bin/yarn /bin/yarn \
+    && cd /code \
+    && yarn install --modules-folder /node_modules \
+    && mkdir -p /node_modules/.bin \
+    && for f in node_modules/.bin/*; do ln -sf "$(echo $(readlink $f) | sed -e 's|../../../node_modules/|../|g')" "/node_modules/.bin/$(basename $f)"; done \
+    && rm -rf node_modules
+
+ENV PATH="/node_modules/.bin:${PATH}"
+
+ENTRYPOINT ["yarn", "run"]
+
+CMD ["fix"]

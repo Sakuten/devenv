@@ -1,0 +1,17 @@
+language: generic
+sudo: required
+service:
+  - docker
+env:
+  DOCKER_COMPOSE_VERSION: 1.21.2
+before_install:
+  - |
+    sudo apt-get update
+    sudo apt-get install -o Dpkg::Options::="--force-confold" --force-yes -y docker-engine
+    sudo rm /usr/local/bin/docker-compose
+    sudo wget https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+script:
+  - ./scripts/lint.sh
+  - ./scripts/unit_test.sh
+  - ./scripts/test.sh

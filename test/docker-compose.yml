@@ -1,0 +1,64 @@
+version: "3"
+services:
+  test:
+    build:
+      context: .
+    links:
+      - backend
+      - frontend
+      - selenium
+    working_dir: "/test"
+    volumes:
+      - "../test:/test"
+  selenium:
+    image: selenium/standalone-chrome:3.12.0-cobalt
+    expose:
+      - "4444"
+    links:
+      - backend
+      - frontend
+    shm_size: 2g
+    volumes:
+      - "../test/fake_video:/fake_video"
+  frontend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ../${FRONTEND_DIR}
+    command: "start:js"
+    expose:
+      - "${PORT}"
+    depends_on:
+      - backend
+    environment:
+      - "REACT_APP_API_SERVER=http://backend:${API_PORT}"
+      - "REACT_APP_RECAPTCHA_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+      - "PORT=${PORT}"
+      - "HOST=0.0.0.0"
+    working_dir: "/code"
+    volumes:
+      - "../${FRONTEND_DIR}:/code"
+  backend:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ../${BACKEND_DIR}
+    expose:
+      - "${API_PORT}"
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_CONFIGURATION=testing
+      - FLASK_ENV=development
+      - RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
+    command: "start:flask --port ${API_PORT} --host 0.0.0.0"
+    working_dir: "/code"
+    volumes:
+      - "../${BACKEND_DIR}:/code"
+  db:
+    image: postgres:10.4
+    environment:
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+    expose:
+      - "5432"

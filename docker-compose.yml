@@ -1,17 +1,32 @@
 version: "3"
 services:
+  monitor:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./monitor
+    command: "'ALL SERVICES are READY! Open http://${API_HOST}:${PORT}/ in your browser.' db:5432 backend:${API_PORT} frontend:${PORT}"
+    environment:
+      - "TERM=${TERM}"
+    links:
+      - frontend
+      - backend
+      - db
   frontend:
     build:
       dockerfile: Dockerfile.dev
       context: ${FRONTEND_DIR}
+    command: "start"
     ports:
       - "${PORT}:${PORT}"
       - "8081:8081"
     depends_on:
       - backend
     environment:
-      - API_SERVER="http://${API_HOST}:${API_PORT}"
-    command: "--port ${PORT} --host 0.0.0.0"
+      - "REACT_APP_API_SERVER=http://${API_HOST}:${API_PORT}"
+      - "REACT_APP_RECAPTCHA_KEY=${RECAPTCHA_KEY}"
+      - "PORT=${PORT}"
+      - "HOST=0.0.0.0"
+      - "SHELL=/bin/sh"
     working_dir: "/code"
     volumes:
       - "${FRONTEND_DIR}:/code"
@@ -22,26 +37,25 @@ services:
     ports:
       - "${API_PORT}:${API_PORT}"
     depends_on:
-      - mysql
+      - db
     links:
-      - mysql
+      - db
     environment:
       - FLASK_APP=app.py
+      - FLASK_CONFIGURATION=development
       - FLASK_ENV=development
-      - FLASK_DEBUG=1
-    command: "--port ${API_PORT} --host 0.0.0.0"
+      - RECAPTCHA_SECRET_KEY=${RECAPTCHA_SECRET_KEY}
+    command: "/bin/bash -c 'pipenv run start:dep & pipenv run start:flask --port ${API_PORT} --host 0.0.0.0'"
     working_dir: "/code"
     volumes:
       - "${BACKEND_DIR}:/code"
-  mysql:
-    image: mysql:5
-    volumes:
-      - "./mysql:/var/lib/mysql"
-      - "./mysql-init:/docker-entrypoint-initdb.d"
-      - "./mysql-confd:/etc/mysql/conf.d"
+  db:
+    image: postgres:10.4
     environment:
-      - "MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}"
+      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+    volumes:
+      - "./db:/var/lib/postgresql/data"
     expose:
-      - "3306"
+      - "5432"
     ports:
-      - "3306:3306"
+      - "5432:5432"
