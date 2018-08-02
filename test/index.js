@@ -22,7 +22,7 @@ describe('Login', function () {
   })
 
   it('Can successfully authenticate with secret id in the get parameter', function () {
-    browser.url('http://frontend:8000/lottery/login?sid=6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
+    browser.url('http://frontend:8000/lottery/login?sid=nCGX_hMrMZxRAak-W36kIzzxrup_SIKI')
     // Immediately shows reCAPTCHA
     browser.waitForVisible('iframe', 500)
     browser.frame($('iframe').value)
@@ -31,7 +31,7 @@ describe('Login', function () {
     browser.frameParent()
     browser.waitForVisible('[data-test="applicationview"]', 2000)
     const title = $('[data-test="applicationview-title"]').getText()
-    expect(title).to.equal('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
+    expect(title).to.equal('Logged in as nCGX_hMrMZxRAak-W36kIzzxrup_SIKI')
     const url = browser.getUrl()
     expect(url).to.equal('http://frontend:8000/lottery')
   })
@@ -46,7 +46,7 @@ describe('Login', function () {
     browser.frameParent()
     browser.waitForVisible('[data-test="applicationview"]', 2000)
     const title = $('[data-test="applicationview-title"]').getText()
-    expect(title).to.include('Logged in as 6jt8DtRpI8jqxH2SVoNKNH_81Fuhmz4n')
+    expect(title).to.equal('Logged in as nCGX_hMrMZxRAak-W36kIzzxrup_SIKI')
     const url = browser.getUrl()
     expect(url).to.equal('http://frontend:8000/lottery')
   })
