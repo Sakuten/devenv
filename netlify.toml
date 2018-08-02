@@ -4,8 +4,7 @@
   command = "yarn build"
 
 [build.environment]
-  NODE_ENV = "development"
-  BABEL_ENV = "development"
+  REACT_APP_STAGING_BUILD = "1"
   REACT_APP_API_SERVER = "https://sakuten-api-testflight.herokuapp.com"
 
 [context.deploy-preview.environment]
@@ -14,10 +13,7 @@
   REACT_APP_RECAPTCHA_KEY = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
 
 [context.production]
-  command = "yarn build --production"
   [context.production.environment]
-    NODE_ENV = "production"
-    BABEL_ENV = "production"
     REACT_APP_API_SERVER = "https://sakuten-api-release.herokuapp.com"
 
 [[redirects]]
@@ -28,7 +24,7 @@
 [[headers]]
   for = "/index.html"
   [headers.values]
-    Content-Security-Policy = "default-src 'self' https:; font-src 'self' https: data:; img-src 'self' https: data:; object-src 'none'; script-src https:; style-src 'self' https: 'unsafe-inline'"
+    Content-Security-Policy = "default-src 'self' https:; font-src 'self' https: data:; img-src 'self' https: data:; object-src 'none'; worker-src blob: https:; script-src blob: https:; style-src 'self' https: 'unsafe-inline'"
     Strict-Transport-Security = "max-age=631138519"
     X-Content-Type-Options = "nosniff"
     X-Download-Options = "noopen"
