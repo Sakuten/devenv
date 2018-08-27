@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -n " * OS: "
+echo -n " * "
 uname -a
 
 echo -n " * Sakuten/devenv@"
