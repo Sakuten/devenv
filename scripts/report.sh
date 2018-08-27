@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -n " * "
-uname -a
+uname -a | sed -e 's/ #/#/g'
 
 echo -n " * Sakuten/devenv@"
 git rev-parse HEAD
