@@ -49,8 +49,9 @@ services:
       - db
     environment:
       - FLASK_APP=app.py
-      - FLASK_CONFIGURATION=testing
+      - FLASK_CONFIGURATION=preview
       - FLASK_ENV=development
+      - DATABASE_URL=postgresql://postgres:pasword@db/postgres
       - RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
     command: "start:flask --port ${API_PORT} --host 0.0.0.0"
     working_dir: "/code"
