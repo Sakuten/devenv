@@ -3,15 +3,15 @@
 echo -n " * OS: "
 uname -a
 
-echo -n " * devenv: "
+echo -n " * Sakuten/devenv@"
 git rev-parse HEAD
 
-echo -n " * frontend: "
+echo -n " * Sakuten/frontend@"
 cd frontend
 git rev-parse HEAD
 cd ..
 
 cd backend
-echo -n " * backend: "
+echo -n " * Sakuten/backend@"
 git rev-parse HEAD
 cd ..
