@@ -56,7 +56,8 @@ describe('Login', function () {
       return
     }
     // Logout
-    $('button').click()
+    browser.execute("localStorage.setItem('Token', '');")
+    browser.refresh()
     browser.waitForVisible('[data-test="applicationview"]', 500, true) // true for reverse
   })
 })
