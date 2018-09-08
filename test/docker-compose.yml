@@ -24,7 +24,7 @@ services:
     build:
       dockerfile: Dockerfile.dev
       context: ../${FRONTEND_DIR}
-    command: "start:js"
+    command: "npm-run-all -p start:css start:js"
     expose:
       - "${PORT}"
     depends_on:

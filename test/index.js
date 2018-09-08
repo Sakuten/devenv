@@ -9,9 +9,9 @@ describe('Login', function () {
 
   it('Can successfully renders top page', function () {
     browser.url('http://frontend:8000/')
-    browser.waitForVisible('p', 500)
-    const title = $('p').getText()
-    expect(title).to.include('Home')
+    browser.waitForVisible('[data-test="home-login"]', 500)
+    const title = $('[data-test="home-login"]').getText()
+    expect(title).to.include('カメラが起動します')
   })
 
   it('Routes to login page', function () {
@@ -30,8 +30,6 @@ describe('Login', function () {
     browser.waitForVisible('.recaptcha-checkbox-checkmark', 5000)
     browser.frameParent()
     browser.waitForVisible('[data-test="applicationview"]', 2000)
-    const title = $('[data-test="applicationview-title"]').getText()
-    expect(title).to.equal('Logged in as nCGX_hMrMZxRAak-W36kIzzxrup_SIKI')
     const url = browser.getUrl()
     expect(url).to.equal('http://frontend:8000/lottery')
   })
@@ -45,8 +43,6 @@ describe('Login', function () {
     browser.waitForVisible('.recaptcha-checkbox-checkmark', 5000)
     browser.frameParent()
     browser.waitForVisible('[data-test="applicationview"]', 2000)
-    const title = $('[data-test="applicationview-title"]').getText()
-    expect(title).to.equal('Logged in as nCGX_hMrMZxRAak-W36kIzzxrup_SIKI')
     const url = browser.getUrl()
     expect(url).to.equal('http://frontend:8000/lottery')
   })
@@ -56,7 +52,8 @@ describe('Login', function () {
       return
     }
     // Logout
-    $('button').click()
+    browser.execute("localStorage.setItem('Token', '');")
+    browser.refresh()
     browser.waitForVisible('[data-test="applicationview"]', 500, true) // true for reverse
   })
 })
