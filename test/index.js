@@ -9,9 +9,9 @@ describe('Login', function () {
 
   it('Can successfully renders top page', function () {
     browser.url('http://frontend:8000/')
-    browser.waitForVisible('p', 500)
-    const title = $('p').getText()
-    expect(title).to.include('Home')
+    browser.waitForVisible('[data-test="home-login"]', 500)
+    const title = $('[data-test="home-login"]').getText()
+    expect(title).to.include('カメラが起動します')
   })
 
   it('Routes to login page', function () {
