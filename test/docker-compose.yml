@@ -61,6 +61,6 @@ services:
   db:
     image: postgres:10.4
     environment:
-      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+      - "POSTGRES_PASSWORD=password"
     expose:
       - "5432"
