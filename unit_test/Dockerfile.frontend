@@ -3,7 +3,7 @@ FROM node:8.11.2-stretch
 ADD https://github.com/yarnpkg/yarn/releases/download/v1.7.0/yarn-v1.7.0.tar.gz /opt/yarn.tgz
 
 WORKDIR /code
-COPY package.json /code
+COPY frontend/package.json /code
 
 RUN cd /opt \
     && tar xf yarn.tgz \

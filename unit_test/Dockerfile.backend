@@ -1,7 +1,7 @@
 FROM python:3.6-stretch
 
 WORKDIR /code
-COPY Pipfile /code
+COPY backend/Pipfile /code
 
 RUN pip install pipenv \
     && pipenv install --dev

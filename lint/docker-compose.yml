@@ -2,15 +2,15 @@ version: "3"
 services:
   frontend:
     build:
-      dockerfile: ../lint/Dockerfile.frontend
-      context: ../${FRONTEND_DIR}
+      dockerfile: ./lint/Dockerfile.frontend
+      context: ..
     command: "fix"
     volumes:
-      - "../${FRONTEND_DIR}:/code"
+      - "..:/code"
   backend:
     build:
-      dockerfile: ../lint/Dockerfile.backend
-      context: ../${BACKEND_DIR}
+      dockerfile: ./lint/Dockerfile.backend
+      context: ..
     command: "fix"
     volumes:
-      - "../${BACKEND_DIR}:/code"
+      - "..:/code"
