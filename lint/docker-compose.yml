@@ -6,11 +6,11 @@ services:
       context: ..
     command: "fix"
     volumes:
-      - "..:/code"
+      - "../${FRONTEND_DIR}:/code"
   backend:
     build:
       dockerfile: ./lint/Dockerfile.backend
       context: ..
     command: "fix"
     volumes:
-      - "..:/code"
+      - "../${BACKEND_DIR}:/code"

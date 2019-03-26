@@ -9,7 +9,7 @@ services:
       - "CI=1"
       - "REACT_APP_RECAPTCHA_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
     volumes:
-      - "..:/code"
+      - "../${FRONTEND_DIR}:/code"
       - /code/node_modules
   backend:
     build:
@@ -19,4 +19,4 @@ services:
     environment:
       - RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
     volumes:
-      - "..:/code"
+      - "../${BACKEND_DIR}:/code"
