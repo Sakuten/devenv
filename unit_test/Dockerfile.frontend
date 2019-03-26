@@ -4,6 +4,7 @@ ADD https://github.com/yarnpkg/yarn/releases/download/v1.7.0/yarn-v1.7.0.tar.gz 
 
 WORKDIR /code
 COPY package.json /code
+COPY yarn.lock /code
 
 RUN cd /opt \
     && tar xf yarn.tgz \
