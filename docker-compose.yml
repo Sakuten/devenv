@@ -54,7 +54,7 @@ services:
     environment:
       - "POSTGRES_PASSWORD=${DB_PASSWORD}"
     volumes:
-      - "./db:/var/lib/postgresql/data"
+      - "/var/lib/postgresql/data"
     expose:
       - "5432"
     ports:
