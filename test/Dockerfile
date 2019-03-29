@@ -8,6 +8,7 @@ ADD https://github.com/yarnpkg/yarn/releases/download/v1.7.0/yarn-v1.7.0.tar.gz 
 
 WORKDIR /test
 COPY package.json /test
+COPY yarn.lock /test
 RUN cd /opt \
     && tar xf yarn.tgz \
     && ln -s yarn-1.7.0/bin/yarn /bin/yarn \
