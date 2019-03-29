@@ -2,8 +2,8 @@ version: "3"
 services:
   frontend:
     build:
-      dockerfile: ../unit_test/Dockerfile.frontend
-      context: ../${FRONTEND_DIR}
+      dockerfile: ./unit_test/Dockerfile.frontend
+      context: ..
     command: "test"
     environment:
       - "CI=1"
@@ -13,8 +13,8 @@ services:
       - /code/node_modules
   backend:
     build:
-      dockerfile: ../unit_test/Dockerfile.backend
-      context: ../${BACKEND_DIR}
+      dockerfile: ./unit_test/Dockerfile.backend
+      context: ..
     command: "test"
     environment:
       - RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
