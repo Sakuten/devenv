@@ -30,6 +30,7 @@ services:
     working_dir: "/code"
     volumes:
       - "${FRONTEND_DIR}:/code"
+      - "/code/node_modules"
   backend:
     build:
       dockerfile: Dockerfile.dev
