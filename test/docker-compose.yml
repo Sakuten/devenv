@@ -49,8 +49,10 @@ services:
       - db
     environment:
       - FLASK_APP=app.py
-      - FLASK_CONFIGURATION=testing
+      - FLASK_CONFIGURATION=preview
       - FLASK_ENV=development
+      - SECRET_KEY=my4ViaJb4rek9YIRLFS_3E0fT88QiRhdK8uKOjHXhrA=
+      - DATABASE_URL=postgresql://postgres:password@db/postgres
       - RECAPTCHA_SECRET_KEY=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe
     command: "start:flask --port ${API_PORT} --host 0.0.0.0"
     working_dir: "/code"
@@ -59,6 +61,6 @@ services:
   db:
     image: postgres:10.4
     environment:
-      - "POSTGRES_PASSWORD=${DB_PASSWORD}"
+      - "POSTGRES_PASSWORD=password"
     expose:
       - "5432"
